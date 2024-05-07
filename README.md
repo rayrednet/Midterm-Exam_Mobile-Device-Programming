@@ -24,3 +24,5 @@ This repository hosts the source code for my mobile app developed for the midter
 ### CRUD Sqflite
 
 ### Use atleast 5 different widgets
+
+## E. How to run the repository
