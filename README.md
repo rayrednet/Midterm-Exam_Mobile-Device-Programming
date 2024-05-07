@@ -25,4 +25,29 @@ This repository hosts the source code for my mobile app developed for the midter
 
 ### Use atleast 5 different widgets
 
-## E. How to run the repository
+## E. How to run this repository
+### E.1. Prerequisites
+You need to have Flutter installed on your machine.
+If you do not have Flutter installed, please follow the installation guide here:
+https://flutter.dev/docs/get-started/install
+
+### E.2. Run the program
+1. Clone the repo
+    ```bash
+    git clone git@github.com:rayrednet/Midterm-Exam_Mobile-Device-Programming_Rayssa-Ravelia.git
+    ```
+
+2. Navigate to the project directory
+    ```bash
+    cd Midterm-Exam_Mobile-Device-Programming_Rayssa-Ravelia
+    ```
+
+3. Fetch all depencies
+    ```bash
+    flutter pub get
+    ```
+
+4. Run the app
+    ```bash
+    flutter run lib/main.dart
+    ```
