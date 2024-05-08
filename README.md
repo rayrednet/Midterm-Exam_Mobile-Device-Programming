@@ -1,4 +1,4 @@
-# Midterm-Exam_Mobile-Device-Programming
+# Ujian Susulan_Midterm-Exam_Mobile-Device-Programming
 
 ## A. Student Identity
 | Name           | NRP          | Class                            |
@@ -10,6 +10,8 @@
 This repository hosts the source code for my mobile app developed for the midterm exam in the "Pemrograman Perangkat Bergerak" course. It features basic functionalities of a mobile application using Flutter and Dart, demonstrating key aspects of mobile development.
 
 ## C. Problem Description
+Create this kind of app using flutter!
+![problem](img/problem.jpeg)
 
 ## D. Widget Implementation Examples (based on midterm exam points)
 

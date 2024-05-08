@@ -1,6 +1,6 @@
 {
-    "name": "midterm_exam",
-    "short_name": "midterm_exam",
+    "name": "sqflite_crud0",
+    "short_name": "sqflite_crud0",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

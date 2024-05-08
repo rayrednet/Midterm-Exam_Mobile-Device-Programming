@@ -1,4 +1,4 @@
-package com.example.midterm_exam
+package com.example.sqflite_crud0
 
 import io.flutter.embedding.android.FlutterActivity
 

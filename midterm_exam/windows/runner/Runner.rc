@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "midterm_exam" "\0"
+            VALUE "FileDescription", "sqflite_crud0" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "midterm_exam" "\0"
+            VALUE "InternalName", "sqflite_crud0" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "midterm_exam.exe" "\0"
-            VALUE "ProductName", "midterm_exam" "\0"
+            VALUE "OriginalFilename", "sqflite_crud0.exe" "\0"
+            VALUE "ProductName", "sqflite_crud0" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
