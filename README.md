@@ -10,8 +10,8 @@
 This repository hosts the source code for my mobile app developed for the midterm exam in the "Pemrograman Perangkat Bergerak" course. It features basic functionalities of a mobile application using Flutter and Dart, demonstrating key aspects of mobile development.
 
 ## C. Problem Description
-Create this kind of app using flutter!
-![problem](img/problem.jpeg){height="50%" width="50%"}
+Create an app using Flutter as demonstrated in the example below:
+![problem](img/problem.jpeg)
 
 ## D. App Preview
 ### D.1. Home page
@@ -210,19 +210,214 @@ class NotesPage extends StatefulWidget {
 ```
 
 ### E.5. CRUD Sqflite
-This section outlines the CRUD (Create, Read, Update, Delete) operations using Sqflite in the Flutter app. Each operation is demonstrated with Dart code examples and their corresponding app behaviors.
+This section outlines the CRUD (Create, Read, Update, Delete) operations using Sqflite in the Flutter app. Each operation is demonstrated examples and their corresponding app behaviors.
 #### E.5.1. Create
-```dart
+To add a new place review, click the "+" button located at the bottom right corner of the homepage. You will then be directed to the following page:
 
-```
+
+![create](./img/CREATE.png)
+
+Here's what users can do on this page:
+
+- **Pick Image**: Users can upload an image to represent the place. This can be done by tapping the "Pick Image" button, which allows users to choose an image either from their device's camera or gallery.
+- **Star Rating**: Users can set the initial star rating for the place by tapping on the stars.
+- **Toggle Favorite**: The heart icon lets users immediately mark the new place as a favorite.
+- **Input Fields**: Users can enter essential details about the place:
+  - **Place Name**: Name of the location.
+  - **Reviewer Name**: Name of the person reviewing or adding the place.
+  - **Opening Hours**: Operational hours of the place.
+  - **Location**: Physical address or location of the place.
+  
+- **Save Button**: After filling out all the details, users can save the new place to the app's database by clicking the "Save" button at the top of the page.
+
+For instance, below is an example of how a new place's review might be filled out:
+![add-new](./img/add-new.png)
+
+Upon saving, the new review will appear on the homepage as shown here:
+![homepage2](./img/homepage2.png)
 
 #### E.5.2. Read
+The details of added reviews can be viewed just like other entries:
+![view](./img/detailed-new.png)
 
 #### E.5.3. Update
+In this example, the review for "Ayam Goreng President" is updated:
+![update](./img/update.png)
+
+The changes include:
+- The star rating has been modified from 4.5 to 3.
+- The place name has been changed from "Ayam Goreng President" to "Ayam Goreng Nelongso."
+
+These updates are reflected on the homepage as well:
+![update home page](./img/update-homepage.png)
+
+As visible, both the star rating and the restaurant name have been updated to "Ayam Goreng Nelongso" with a 3-star rating.
 
 #### E.5.4. Delete
+To demonstrate the deletion process:
+1. Select the trash can icon at the top right corner of the "Ayam Goreng Nelongso" entry.
+![del](./img/wantodelete.png)
 
-### E.6. Use atleast 5 different widgets
+2. After confirming the deletion, "Ayam Goreng Nelongso" is removed from the homepage, reflecting the update immediately:
+
+![afterDel](./img/afterDel.png)
+
+
+Here's an updated section with examples of ten different widgets used in your Flutter app:
+
+---
+
+### E.6. Use at least 5 different widgets
+
+This application utilizes a variety of Flutter widgets to create a dynamic and interactive user interface. Here are few examples of widgets used within the app:
+
+1. **ElevatedButton**: Used for user interactions like submitting forms and choosing media. Example snippet:
+   ```dart
+   ElevatedButton(
+     onPressed: pickMedia,
+     child: const Text('Pick Image'),
+   ),
+   ```
+
+2. **RatingBar.builder**: Allows users to rate places by selecting stars. It supports half ratings and updates the state dynamically. Example snippet:
+   ```dart
+   RatingBar.builder(
+     initialRating: rating,
+     minRating: 1,
+     direction: Axis.horizontal,
+     allowHalfRating: true,
+     itemCount: 5,
+     itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+     itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
+     onRatingUpdate: (newRating) {
+       setState(() {
+         rating = newRating;
+       });
+     },
+   ),
+   ```
+
+3. **ListView**: Organizes widgets in a scrollable list. Used here to layout form fields and buttons vertically. Example usage:
+   ```dart
+   ListView(
+     children: [
+       if (imagePath != null)
+         Container(
+           height: 200,
+           width: double.infinity,
+           decoration: BoxDecoration(
+             image: DecorationImage(
+               fit: BoxFit.cover,
+               image: FileImage(File(imagePath!)),
+             ),
+           ),
+         ),
+       ElevatedButton(...),
+       RatingBar.builder(...),
+       NoteFormWidget(...),
+     ],
+   ),
+   ```
+
+4. **NoteFormWidget**: A custom widget used to gather input about a place, including details like title, description, reviewer's name, and operating hours. It uses various FormField widgets internally. Example call:
+   ```dart
+   NoteFormWidget(
+     isImportant: isImportant,
+     number: number,
+     title: title,
+     description: description,
+     reviewer: reviewer,
+     openingHours: openingHours,
+     onChangedImportant: (bool isImportant) => setState(() => this.isImportant = isImportant),
+     onChangedNumber: (num number) => setState(() => this.number = number),
+     onChangedTitle: (String title) => setState(() => this.title = title),
+     onChangedDescription: (String description) => setState(() => this.description = description),
+     onChangedReviewer: (String value) => setState(() => reviewer = value),
+     onChangedOpeningHours: (String value) => setState(() => openingHours = value),
+   ),
+   ```
+
+5. **ImagePicker**: Utilized to let users pick images either from the camera or gallery. Handles asynchronous interactions with the native platform to retrieve media. Example use in `pickMedia` method:
+   ```dart
+   final pickedFile = await _picker.pickImage(
+     source: source,
+     maxWidth: 1800,
+     maxHeight: 1800,
+     imageQuality: 88,
+     preferredCameraDevice: CameraDevice.rear,
+   );
+   ```
+
+6. **Scaffold**: A structure that provides the basic visual layout for the app, including app bar, navigation, and the body of the page. Example usage:
+   ```dart
+   Scaffold(
+     appBar: AppBar(
+       iconTheme: const IconThemeData(color: Colors.white),
+       actions: [buildButton()],
+     ),
+     body: Form(
+       key: _formKey,
+       child: ListView(
+         children: [
+           if (imagePath != null) ...,
+           ElevatedButton(...),
+           RatingBar.builder(...),
+           NoteFormWidget(...),
+         ],
+       ),
+     ),
+   )
+   ```
+
+7. **Form**: A container for grouping and validating multiple form fields. Example usage:
+   ```dart
+   Form(
+     key: _formKey,
+     child: ListView(
+       children: [
+         NoteFormWidget(...),
+         RatingBar.builder(...),
+       ],
+     ),
+   )
+   ```
+
+8. **TextFormField**: A material-styled text field that integrates with the form for validation. Example usage:
+   ```dart
+   TextFormField(
+     initialValue: title,
+     decoration: const InputDecoration(labelText: 'Title'),
+     validator: (value) {
+       if (value == null || value.isEmpty) {
+         return 'Title cannot be empty';
+       }
+       return null;
+     },
+     onChanged: (value) => setState(() => title = value),
+   )
+   ```
+
+9. **IconButton**: A button that displays an icon and triggers actions. Example usage:
+   ```dart
+   IconButton(
+     icon: const Icon(Icons.camera_alt),
+     onPressed: () => Navigator.of(context).pop(ImageSource.camera),
+   )
+   ```
+
+10. **Container**: A versatile widget that can contain other widgets and apply properties like padding, alignment, and decoration. Example usage:
+    ```dart
+    Container(
+      height: 200,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: FileImage(File(imagePath!)),
+        ),
+      ),
+    )
+    ```
 
 ## F. How to run this repository
 ### F.1. Prerequisites
