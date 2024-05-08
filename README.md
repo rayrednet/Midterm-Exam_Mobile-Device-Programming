@@ -248,7 +248,7 @@ The changes include:
 - The star rating has been modified from 4.5 to 3.
 - The place name has been changed from "Ayam Goreng President" to "Ayam Goreng Nelongso."
 
-These updates are reflected on the homepage as well:
+These updates are reflected on the homepage as well: \
 ![update home page](./img/update-homepage.png)
 
 As visible, both the star rating and the restaurant name have been updated to "Ayam Goreng Nelongso" with a 3-star rating.
