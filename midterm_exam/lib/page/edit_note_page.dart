@@ -26,6 +26,8 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
   late String description;
   String? imagePath;
   double rating = 0.0;
+  late String reviewer;
+  late String openingHours;
 
   final ImagePicker _picker = ImagePicker();
 
@@ -39,6 +41,8 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
     description = widget.note?.description ?? '';
     imagePath = widget.note?.imagePath;
     rating = widget.note?.rating ?? 0.0;
+    reviewer = widget.note?.reviewer ?? '';
+    openingHours = widget.note?.openingHours ?? '';
   }
 
   Future<void> pickMedia() async {
@@ -126,6 +130,8 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
                 number: number,
                 title: title,
                 description: description,
+                reviewer: reviewer,
+                openingHours: openingHours,
                 onChangedImportant: (isImportant) =>
                     setState(() => this.isImportant = isImportant),
                 onChangedNumber: (number) =>
@@ -133,6 +139,8 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
                 onChangedTitle: (title) => setState(() => this.title = title),
                 onChangedDescription: (description) =>
                     setState(() => this.description = description),
+                onChangedReviewer: (value) => setState(() => reviewer = value),
+                onChangedOpeningHours: (value) => setState(() => openingHours = value),
               ),
             ],
           ),
@@ -206,8 +214,11 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
       createdTime: DateTime.now(),
       imagePath: imagePath,
       rating: rating,
+      reviewer: reviewer,
+      openingHours: openingHours,
     );
 
     await NotesDatabase.instance.create(note);
   }
+
 }

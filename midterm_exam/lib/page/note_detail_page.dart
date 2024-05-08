@@ -48,7 +48,6 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
             : Padding(
                 padding: const EdgeInsets.all(12),
                 child: ListView(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     imageCover(), // Display the image cover if available
                     const SizedBox(height: 8),
@@ -63,6 +62,18 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Reviewer: ${note.reviewer}', // Display the reviewer's name
+                      style:
+                          const TextStyle(color: Colors.white70, fontSize: 18),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Hours: ${note.openingHours}', // Display the operating hours
+                      style:
+                          const TextStyle(color: Colors.white70, fontSize: 18),
                     ),
                     const SizedBox(height: 8),
                     Text(

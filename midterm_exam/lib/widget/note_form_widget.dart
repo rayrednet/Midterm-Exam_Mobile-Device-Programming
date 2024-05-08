@@ -5,10 +5,14 @@ class NoteFormWidget extends StatelessWidget {
   final int? number;
   final String? title;
   final String? description;
+  final String? reviewer;
+  final String? openingHours;
   final ValueChanged<bool> onChangedImportant;
   final ValueChanged<int> onChangedNumber;
   final ValueChanged<String> onChangedTitle;
   final ValueChanged<String> onChangedDescription;
+  final ValueChanged<String> onChangedReviewer;
+  final ValueChanged<String> onChangedOpeningHours;
 
   const NoteFormWidget({
     Key? key,
@@ -16,10 +20,14 @@ class NoteFormWidget extends StatelessWidget {
     this.number = 0,
     this.title = '',
     this.description = '',
+    this.reviewer = '',
+    this.openingHours = '',
     required this.onChangedImportant,
     required this.onChangedNumber,
     required this.onChangedTitle,
     required this.onChangedDescription,
+    required this.onChangedOpeningHours,
+    required this.onChangedReviewer,
   }) : super(key: key);
 
   @override
@@ -45,21 +53,16 @@ class NoteFormWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Expanded(
-                    child: Slider(
-                      value: (number ?? 0).toDouble(),
-                      min: 0,
-                      max: 5,
-                      divisions: 5,
-                      onChanged: (number) => onChangedNumber(number.toInt()),
-                    ),
-                  )
                 ],
               ),
               buildTitle(),
               const SizedBox(height: 8),
-              buildDescription(),
+              buildReviewer(),
+              const SizedBox(height: 8),
+              buildOpeningHours(),
               const SizedBox(height: 16),
+              buildDescription(),
+              const SizedBox(height: 8),
             ],
           ),
         ),
@@ -96,5 +99,34 @@ class NoteFormWidget extends StatelessWidget {
             ? 'The description cannot be empty'
             : null,
         onChanged: onChangedDescription,
+      );
+
+  Widget buildReviewer() => TextFormField(
+        maxLines: 1,
+        initialValue: reviewer,
+        style: const TextStyle(color: Colors.white70, fontSize: 18),
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Reviewer name...',
+          hintStyle: TextStyle(color: Colors.white70),
+        ),
+        validator: (value) =>
+            value != null && value.isEmpty ? 'Reviewer cannot be empty' : null,
+        onChanged: onChangedReviewer,
+      );
+
+  Widget buildOpeningHours() => TextFormField(
+        maxLines: 1,
+        initialValue: openingHours,
+        style: const TextStyle(color: Colors.white70, fontSize: 18),
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Opening hours...',
+          hintStyle: TextStyle(color: Colors.white70),
+        ),
+        validator: (value) => value != null && value.isEmpty
+            ? 'Opening hours cannot be empty'
+            : null,
+        onChanged: onChangedOpeningHours,
       );
 }

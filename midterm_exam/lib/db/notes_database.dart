@@ -12,7 +12,7 @@ class NotesDatabase {
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('notes16.db');
+    _database = await _initDB('place101.db');
     return _database!;
   }
 
@@ -30,6 +30,8 @@ class NotesDatabase {
     const integerType = 'INTEGER NOT NULL';
     const imagePathType = 'TEXT';
     const ratingType = 'REAL';
+    const reviewer = 'TEXT NOT NULL';
+    const openingHours = 'TEXT NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableNotes ( 
@@ -40,7 +42,9 @@ CREATE TABLE $tableNotes (
   ${NoteFields.description} $textType,
   ${NoteFields.time} $textType,
   ${NoteFields.imagePath} $imagePathType,
-  ${NoteFields.rating} $ratingType
+  ${NoteFields.rating} $ratingType,
+  ${NoteFields.reviewer} $reviewer,
+  ${NoteFields.openingHours} $openingHours
   )
 ''');
   }

@@ -3,7 +3,7 @@ final String tableNotes = 'notes';
 class NoteFields {
   static final List<String> values = [
     /// Add all fields
-    id, isImportant, number, title, description, time, imagePath, rating,
+    id, isImportant, number, title, description, time, imagePath, rating, reviewer, openingHours,
   ];
 
   static const String id = '_id';
@@ -14,6 +14,8 @@ class NoteFields {
   static const String time = 'time';
   static const String imagePath = 'imagePath';
   static const String rating = 'rating';
+  static const String reviewer = 'reviewer';
+  static const String openingHours = 'openingHours';
 }
 
 class Note {
@@ -25,6 +27,8 @@ class Note {
   final DateTime createdTime;
   final String? imagePath;
   final double rating;
+  final String reviewer;
+  final String openingHours;
 
   const Note({
     this.id,
@@ -35,6 +39,8 @@ class Note {
     required this.createdTime,
     this.imagePath,
     this.rating = 0.0,
+    required this.reviewer,
+    required this. openingHours,
   });
 
   Note copy({
@@ -56,6 +62,8 @@ class Note {
         createdTime: createdTime ?? this.createdTime,
         imagePath: imagePath ?? this.imagePath,
         rating: rating ?? this.rating,
+        reviewer: reviewer ?? this.reviewer,
+        openingHours: openingHours ?? this.openingHours,
       );
 
   static Note fromJson(Map<String, Object?> json) => Note(
@@ -67,6 +75,8 @@ class Note {
         createdTime: DateTime.parse(json[NoteFields.time] as String),
         imagePath: json[NoteFields.imagePath] as String?,
         rating: json[NoteFields.rating] as double? ?? 0.0,
+        reviewer: json[NoteFields.reviewer] as String,
+        openingHours: json[NoteFields.openingHours] as String,
       );
 
   Map<String, Object?> toJson() => {
@@ -78,5 +88,7 @@ class Note {
         NoteFields.time: createdTime.toIso8601String(),
         NoteFields.imagePath: imagePath,
         NoteFields.rating: rating,
+        NoteFields.reviewer: reviewer,
+        NoteFields.openingHours: openingHours,
       };
 }
