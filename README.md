@@ -49,5 +49,5 @@ https://flutter.dev/docs/get-started/install
 
 4. Run the app
     ```bash
-    flutter run lib/main.dart
+    flutter run midterm_exam/lib/main.dart
     ```
