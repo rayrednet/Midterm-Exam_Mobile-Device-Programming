@@ -2,7 +2,6 @@ final String tableNotes = 'notes';
 
 class NoteFields {
   static final List<String> values = [
-    /// Add all fields
     id, isImportant, number, title, description, time, imagePath, rating, reviewer, openingHours,
   ];
 
